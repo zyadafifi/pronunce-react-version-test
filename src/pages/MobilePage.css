@@ -510,6 +510,8 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
+
+
 /* Practice Card */
 .practice-card {
   padding: 32px 24px 24px;
@@ -537,6 +539,7 @@
 }
 
 /* Practice Sentence Display */
+
 
 .sentence-text {
   font-size: 18px;
@@ -612,6 +615,7 @@
 }
 
 /* Microphone Button - Center */
+
 
 .mic-btn::before {
   content: "";
@@ -986,6 +990,8 @@
   margin-bottom: 20px;
 }
 
+
+
 .mobile-score-circle-inner {
   width: 60px;
   height: 60px;
@@ -1165,13 +1171,13 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #f8f9fa;
+  background: #f8f9fa;     
   border: none;
   color: linear-gradient(
     90deg,
-    var(--sna-primary) 0%,
-    var(--sna-secondary) 100%
-  );
+var(--sna-primary) 0%,
+var(--sna-secondary) 100%
+);
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -1257,7 +1263,7 @@
   background: var(--gradient-danger) !important;
   box-shadow: 0 4px 12px rgba(255, 68, 68, 0.3) !important;
 }
-.mobile-btn-primary {
+.mobile-btn-primary{
   max-height: 16px !important;
 }
 /* Mobile Score Animation */
@@ -1340,6 +1346,8 @@
 .mobile-recording-ui.show {
   display: block;
 }
+
+
 
 .mobile-pause-btn {
   width: 36px;
@@ -1664,7 +1672,7 @@
   padding: 12px 16px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
+  text-align: center; 
 }
 
 .subtitle-english {
