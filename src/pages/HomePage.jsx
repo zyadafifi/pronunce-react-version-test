@@ -1,610 +1,586 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useProgress } from "../contexts/ProgressContext";
-import GamingBackground from "../components/GamingBackground";
-import "./HomePage.css";
+import { useConversationProgress } from "../hooks/useConversationProgress";
+import { useNewSpeechRecognition } from "../hooks/useNewSpeechRecognition";
+import { usePronunciationScoring } from "../hooks/usePronunciationScoring";
+import { useVideoPlayer } from "../hooks/useVideoPlayer";
+import { useMobileFeatures } from "../hooks/useMobileFeatures";
+import lessonsData from "../data/data.json";
+import MobileVideoContainer from "../components/mobile/MobileVideoContainer";
+import MobileProgressBar from "../components/mobile/MobileProgressBar";
+import MobileBackButton from "../components/mobile/MobileBackButton";
+import MobileSubtitleContainer from "../components/mobile/MobileSubtitleContainer";
+import MobileReplayOverlay from "../components/mobile/MobileReplayOverlay";
+import MobilePracticeOverlay from "../components/mobile/MobilePracticeOverlay";
+import MobileCompletionCard from "../components/mobile/MobileCompletionCard";
+import MobileAlertContainer from "../components/mobile/MobileAlertContainer";
+import "./MobilePage.css";
 
-const HomePage = () => {
+const MobilePage = () => {
+  const { lessonNumber, topicId, conversationId } = useParams();
   const navigate = useNavigate();
-  const { getLessonProgress, isLessonCompleted, isLessonUnlocked } =
+  const { setCurrentLesson, setCurrentTopic, setCurrentConversation } =
     useProgress();
-  const [lessons, setLessons] = useState([]);
-  const [lessonsData, setLessonsData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const lessonsContainerRef = useRef(null);
-  const svgRef = useRef(null);
 
-  // Get lesson icon function - exact copy from script.js
-  const getLessonIcon = useCallback((lessonId) => {
-    switch (lessonId) {
-      case 1:
-        return "fas fa-handshake";
-      case 2:
-        return "fas fa-coffee";
-      case 3:
-        return "fas fa-mug-hot";
-      case 4:
-        return "fas fa-blender";
-      case 5:
-        return "fas fa-shopping-bag";
-      case 6:
-        return "fas fa-store";
-      case 7:
-        return "fas fa-map-marked-alt";
-      case 8:
-        return "fas fa-route";
-      case 9:
-        return "fas fa-plane";
-      case 10:
-        return "fas fa-bullseye";
-      default:
-        return "fas fa-book-open";
-    }
-  }, []);
+  const [lesson, setLesson] = useState(null);
+  const [topic, setTopic] = useState(null);
+  const [conversation, setConversation] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [showPracticeOverlay, setShowPracticeOverlay] = useState(false);
+  const [showReplayOverlay, setShowReplayOverlay] = useState(false);
+  const [showCompletionCard, setShowCompletionCard] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showIOSAudioOverlay, setShowIOSAudioOverlay] = useState(false);
+  const [hasUserInteracted, setHasUserInteracted] = useState(false);
+  const [pendingVideoPlay, setPendingVideoPlay] = useState(false);
 
-  // Calculate path positions - exact copy from script.js
-  const calculatePathPositions = useCallback((lessonsToRender) => {
-    const positions = [];
-    const containerWidth =
-      lessonsContainerRef.current?.offsetWidth || window.innerWidth;
-    const containerHeight = Math.max(800, lessonsToRender.length * 220); // Exact from script.js
+  // Add ref for managing user interaction
+  const userInteractionRef = useRef(false);
 
-    // Ensure minimum dimensions
-    const finalContainerWidth = Math.max(300, containerWidth);
-    const finalContainerHeight = Math.max(800, containerHeight);
-
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-    let padding, availableWidth, availableHeight;
-
-    if (isMobile) {
-      padding = 120; // Exact from script.js
-      availableWidth = finalContainerWidth - padding * 2;
-      availableHeight = finalContainerHeight - padding * 2;
-    } else {
-      padding = 150; // Exact from script.js
-      availableWidth = finalContainerWidth - padding * 2;
-      availableHeight = finalContainerHeight - padding * 2;
-    }
-
-    lessonsToRender.forEach((lesson, index) => {
-      if (isMobile) {
-        // Mobile alternating layout
-        const y =
-          padding +
-          (index / Math.max(lessonsToRender.length - 1, 1)) * availableHeight;
-        const centerX = finalContainerWidth / 2;
-
-        const lessonInfoWidth = 180; // Exact from script.js
-        const circleRadius = 35; // Exact from script.js
-        const safeMargin = 20; // Exact from script.js
-
-        const maxSafeOffset = Math.min(
-          finalContainerWidth / 2 - lessonInfoWidth - circleRadius - safeMargin,
-          finalContainerWidth * 0.2 // Exact from script.js
-        );
-
-        const offsetDistance = Math.max(maxSafeOffset, 40); // Exact from script.js
-
-        let x, side;
-        if (index % 2 === 0) {
-          x = centerX - offsetDistance;
-          side = "left";
-        } else {
-          x = centerX + offsetDistance;
-          side = "right";
-        }
-
-        x = Math.max(
-          circleRadius + safeMargin,
-          Math.min(finalContainerWidth - circleRadius - safeMargin, x)
-        );
-
-        positions.push({ x, y, side });
-      } else {
-        // Desktop layout
-        const progress = index / Math.max(lessonsToRender.length - 1, 1);
-        const baseY = padding + progress * availableHeight;
-
-        const centerX = finalContainerWidth / 2;
-        const maxOffset = availableWidth * 0.3; // Exact from script.js
-
-        let xOffset;
-        const cycle = index % 6; // Exact from script.js
-
-        switch (cycle) {
-          case 0:
-            xOffset = -maxOffset * 0.8; // Exact from script.js
-            break;
-          case 1:
-            xOffset = maxOffset * 0.9; // Exact from script.js
-            break;
-          case 2:
-            xOffset = -maxOffset * 0.6; // Exact from script.js
-            break;
-          case 3:
-            xOffset = maxOffset * 0.7; // Exact from script.js
-            break;
-          case 4:
-            xOffset = -maxOffset * 0.4; // Exact from script.js
-            break;
-          case 5:
-            xOffset = maxOffset * 0.5; // Exact from script.js
-            break;
-          default:
-            xOffset = 0;
-        }
-
-        const x = centerX + xOffset;
-        const y = baseY;
-
-        const finalX = Math.max(
-          padding,
-          Math.min(finalContainerWidth - padding, x)
-        );
-        const finalY = Math.max(
-          padding,
-          Math.min(finalContainerHeight - padding, y)
-        );
-
-        positions.push({
-          x: finalX,
-          y: finalY,
-          side: finalX < finalContainerWidth / 2 ? "left" : "right",
-        });
-      }
-    });
-
-    return {
-      positions,
-      containerWidth: finalContainerWidth,
-      containerHeight: finalContainerHeight,
-    };
-  }, []);
-
-  // Create mobile alternating curved path - exact copy from script.js
-  const createMobileAlternatingPath = useCallback(
-    (startX, startY, endX, endY, index) => {
-      const deltaX = endX - startX;
-      const deltaY = endY - startY;
-
-      // Calculate safe curve amplitude
-      const screenWidth = window.innerWidth;
-      const safeMargin = 40; // Exact from script.js
-
-      const maxLeftExtension = startX - safeMargin;
-      const maxRightExtension = screenWidth - startX - safeMargin;
-      const maxCurveSpace = Math.min(maxLeftExtension, maxRightExtension);
-
-      let curveAmplitude;
-
-      if (screenWidth <= 480) {
-        curveAmplitude = Math.min(screenWidth * 0.25, maxCurveSpace); // Exact from script.js
-      } else if (screenWidth <= 768) {
-        curveAmplitude = Math.min(screenWidth * 0.2, maxCurveSpace); // Exact from script.js
-      } else {
-        curveAmplitude = Math.min(150, maxCurveSpace); // Exact from script.js
-      }
-
-      curveAmplitude = Math.max(curveAmplitude, 30); // Exact from script.js
-
-      const curveDirection = deltaX > 0 ? 1 : -1;
-      const controlOffset = curveAmplitude * curveDirection;
-
-      // Control points for smooth S-curve
-      let control1X = startX + controlOffset;
-      const control1Y = startY + deltaY * 0.4; // Exact from script.js
-
-      let control2X = endX - controlOffset;
-      const control2Y = endY - deltaY * 0.4; // Exact from script.js
-
-      // Clamp control points to safe boundaries
-      control1X = Math.max(
-        safeMargin,
-        Math.min(screenWidth - safeMargin, control1X)
-      );
-      control2X = Math.max(
-        safeMargin,
-        Math.min(screenWidth - safeMargin, control2X)
-      );
-
-      return `M ${startX} ${startY} C ${control1X} ${control1Y}, ${control2X} ${control2Y}, ${endX} ${endY}`;
-    },
-    []
+  // Hooks
+  const {
+    currentSentenceIndex,
+    sentenceScores,
+    completedSentences,
+    overallScore,
+    progressPercentage,
+    isConversationCompleted,
+    isCurrentSentenceCompleted,
+    completeSentence,
+    retrySentence,
+    resetConversation,
+    setCurrentSentenceIndex,
+  } = useConversationProgress(
+    conversationId ? parseInt(conversationId) : 0,
+    conversation?.sentences?.length || 0
   );
 
-  // Create lesson path - exact copy from script.js
-  const createLessonPath = useCallback(
-    (startPos, endPos, lesson, index) => {
-      const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      const isSmallMobile = window.matchMedia("(max-width: 480px)").matches;
+  const {
+    isRecording,
+    isSpeaking,
+    recordedAudio,
+    recordingTime,
+    speechDetected,
+    startRecording,
+    stopRecording,
+    stopRecordingAndGetBlob,
+    playRecordedAudio,
+    clearRecording,
+    speakText,
+    stopSpeaking,
+    cleanup,
+  } = useNewSpeechRecognition();
 
-      let circleRadius;
-      if (isSmallMobile) {
-        circleRadius = 30; // 60px circle / 2
-      } else if (isMobile) {
-        circleRadius = 35; // 70px circle / 2
+  const {
+    isProcessing,
+    lastScore,
+    calculatePronunciationScore,
+    getScoreColor,
+    getScoreMessage,
+  } = usePronunciationScoring();
+
+  const {
+    videoRef,
+    isPlaying,
+    currentTime,
+    duration,
+    isLoading: videoLoading,
+    hasError: videoError,
+    play,
+    pause,
+    replay,
+    setVideoSource,
+    seekTo,
+    setVolume,
+    toggleMute,
+    formatTime,
+    getProgress,
+    handleLoadedMetadata,
+    handleTimeUpdate,
+    handlePlay,
+    handlePause,
+    handleEnded,
+    handleError,
+    handleLoadStart,
+    handleCanPlay,
+  } = useVideoPlayer();
+
+  const {
+    isMobile,
+    viewportHeight,
+    setupMobileAccessibility,
+    enableVideoAudio,
+    mobileSpeakSentence,
+    playMobileRecordedAudioSlow,
+    showMobileAlert,
+    hideMobileAlert,
+  } = useMobileFeatures();
+
+  // Enhanced video play function with user interaction check
+  const safeVideoPlay = async () => {
+    if (!videoRef.current) return false;
+
+    try {
+      await videoRef.current.play();
+      return true;
+    } catch (error) {
+      if (error.name === 'NotAllowedError') {
+        console.log('Video play blocked - user interaction required');
+        setShowIOSAudioOverlay(true);
+        setPendingVideoPlay(true);
+        return false;
       } else {
-        circleRadius = 40; // 80px circle / 2
+        console.error('Video play error:', error);
+        return false;
       }
+    }
+  };
 
-      // Calculate exact connection points - bottom of start circle to top of end circle
-      const startX = startPos.x;
-      const startY = startPos.y + circleRadius; // Bottom edge of start circle
-      const endX = endPos.x;
-      const endY = endPos.y - circleRadius; // Top edge of end circle
-
-      let pathData;
-
-      if (isMobile) {
-        pathData = createMobileAlternatingPath(
-          startX,
-          startY,
-          endX,
-          endY,
-          index
-        );
-      } else {
-        // Desktop path logic - exact from script.js
-        const deltaX = endX - startX;
-        const deltaY = endY - startY;
-        const midY = startY + deltaY * 0.5;
-        const controlOffset = Math.min(Math.abs(deltaX) * 2, 600); // Exact from script.js
-
-        if (Math.abs(deltaX) > 50) {
-          const control1X =
-            startX + (deltaX > 0 ? controlOffset : -controlOffset);
-          const control1Y = startY + deltaY * 0.25; // Exact from script.js
-          const control2X =
-            endX - (deltaX > 0 ? controlOffset : -controlOffset);
-          const control2Y = endY - deltaY * 0.25; // Exact from script.js
-
-          pathData = `M ${startX} ${startY} C ${control1X} ${control1Y}, ${control2X} ${control2Y}, ${endX} ${endY}`;
-        } else {
-          const controlX = startX + deltaX * 0.5;
-          const controlY = midY - Math.abs(deltaX) * 0.3; // Exact from script.js
-          pathData = `M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${endY}`;
-        }
-      }
-
-      const isPathCompleted = lesson.progress >= 100;
-      const strokeClass = isPathCompleted ? "completed" : "incomplete";
-
-      // Create DOM element instead of JSX
-      const pathElement = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "path"
-      );
-      pathElement.setAttribute("d", pathData);
-      pathElement.classList.add("lesson-path", strokeClass);
-
-      return pathElement;
-    },
-    [createMobileAlternatingPath]
-  );
-
-  // Load lessons data
+  // Load conversation data
   useEffect(() => {
-    const loadLessonsData = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch("/src/data/data.json");
-        const data = await response.json();
-        setLessonsData(data);
-      } catch (error) {
-        console.error("Error loading lessons data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadLessonsData();
-  }, []);
-
-  // Update lessons with progress - exact copy from script.js logic
-  const updateLessonsWithProgress = useCallback(() => {
-    if (!lessonsData || !lessonsData.lessons) {
-      return;
-    }
-
-    const updatedLessons = lessonsData.lessons.map((lesson, index) => {
-      const isCompleted = isLessonCompleted(lesson.lessonNumber);
-      const isUnlocked = isLessonUnlocked(
-        lesson.lessonNumber,
-        lessonsData.lessons
-      );
-      const progress = getLessonProgress(lesson.lessonNumber);
-
-      const updatedLesson = {
-        id: lesson.lessonNumber,
-        lessonNumber: lesson.lessonNumber, // Add lessonNumber property
-        title: lesson.title,
-        subtitle: `Learn ${lesson.title.toLowerCase()}`,
-        level:
-          index === 0 ? "Beginner" : index < 3 ? "Elementary" : "Intermediate",
-        progress: progress,
-        completed: isCompleted,
-        locked: !isUnlocked,
-        avatar: lesson.avatar,
-        topics: lesson.topics,
-      };
-
-      return updatedLesson;
-    });
-
-    setLessons(updatedLessons);
-  }, [getLessonProgress, isLessonCompleted, isLessonUnlocked, lessonsData]);
-
-  // Update lessons when data is loaded
-  useEffect(() => {
-    if (lessonsData) {
-      updateLessonsWithProgress();
-    }
-  }, [lessonsData, updateLessonsWithProgress]);
-
-  // Render lessons path - exact copy from script.js
-  const renderLessonsPath = useCallback(() => {
-    if (!lessonsContainerRef.current || lessons.length === 0) {
-      return;
-    }
-
-    const { positions, containerWidth, containerHeight } =
-      calculatePathPositions(lessons);
-
-    lessonsContainerRef.current.style.height = `${containerHeight}px`;
-    lessonsContainerRef.current.innerHTML = ""; // Clear previous content
-
-    const newSvg = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "svg"
+    const currentLesson = lessonsData.lessons.find(
+      (l) => l.lessonNumber === parseInt(lessonNumber)
     );
-    newSvg.classList.add("lessons-path-svg");
-    newSvg.setAttribute("width", containerWidth);
-    newSvg.setAttribute("height", containerHeight);
-    newSvg.setAttribute("viewBox", `0 0 ${containerWidth} ${containerHeight}`);
-    lessonsContainerRef.current.appendChild(newSvg);
-    svgRef.current = newSvg;
+    if (currentLesson) {
+      setLesson(currentLesson);
+      setCurrentLesson(currentLesson.lessonNumber);
 
-    lessons.forEach((lesson, index) => {
-      const position = positions[index];
-      const isCurrent =
-        !lesson.locked &&
-        !lesson.completed &&
-        index === lessons.findIndex((l) => !l.completed && !l.locked);
+      const currentTopic = currentLesson.topics.find(
+        (t) => t.id === parseInt(topicId)
+      );
+      if (currentTopic) {
+        setTopic(currentTopic);
+        setCurrentTopic(currentTopic.id);
 
-      // Create lesson node using DOM methods
-      const lessonNode = document.createElement("div");
-      lessonNode.className = `lesson-node ${position.side}`;
-      lessonNode.style.left = `${position.x}px`;
-      lessonNode.style.top = `${position.y}px`;
-      lessonNode.onclick = () => {
-        if (!lesson.locked) {
-          navigate(`/topics/${lesson.lessonNumber}`);
-        }
-      };
-
-      // Create lesson circle
-      const circle = document.createElement("div");
-      circle.className = `lesson-circle ${
-        lesson.completed
-          ? "completed"
-          : lesson.progress > 0
-          ? "in-progress"
-          : lesson.locked
-          ? "locked"
-          : "current"
-      }`;
-
-      // Add hover effects to circle
-      const applyCircleHoverEffect = () => {
-        circle.style.transform = "scale(1.05)";
-        if (lesson.completed) {
-          circle.style.boxShadow = "0 12px 30px rgba(99, 162, 155, 0.5)";
-        } else if (lesson.progress > 0) {
-          circle.style.boxShadow = "0 12px 30px rgba(99, 162, 155, 0.4)";
-        } else {
-          circle.style.boxShadow = "0 12px 30px rgba(0, 0, 0, 0.4)";
-        }
-      };
-
-      const removeCircleHoverEffect = () => {
-        circle.style.transform = "scale(1)";
-        if (lesson.completed) {
-          circle.style.boxShadow = "0 8px 32px rgba(0, 0, 0, 0.3)";
-        } else if (lesson.progress > 0) {
-          circle.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.15)";
-        } else if (lesson.locked) {
-          circle.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.15)";
-        } else {
-          circle.style.boxShadow = "0 8px 32px rgba(0, 0, 0, 0.3)";
-        }
-      };
-
-      // Mouse events
-      circle.addEventListener("mouseenter", applyCircleHoverEffect);
-      circle.addEventListener("mouseleave", removeCircleHoverEffect);
-
-      // Touch events for mobile
-      circle.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        applyCircleHoverEffect();
-      });
-
-      circle.addEventListener("touchend", (e) => {
-        e.preventDefault();
-        setTimeout(removeCircleHoverEffect, 200);
-      });
-
-      if (lesson.avatar) {
-        const avatar = document.createElement("div");
-        avatar.className = "lesson-avatar";
-        avatar.style.backgroundImage = `url(${lesson.avatar})`;
-        circle.appendChild(avatar);
-      } else {
-        const icon = document.createElement("i");
-        icon.className = `lesson-icon ${getLessonIcon(lesson.id)}`;
-        circle.appendChild(icon);
-      }
-
-      if (lesson.completed) {
-        const checkmark = document.createElement("div");
-        checkmark.className = "lesson-checkmark";
-        checkmark.innerHTML = '<i class="fas fa-check"></i>';
-        circle.appendChild(checkmark);
-      }
-
-      // Add click handler to circle as well
-      circle.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (!lesson.locked) {
-          navigate(`/topics/${lesson.lessonNumber}`);
-        }
-      });
-
-      // Create lesson info
-      const info = document.createElement("div");
-      info.className = `lesson-info ${lesson.locked ? "locked" : ""}`;
-      info.innerHTML = `
-        <div class="lesson-content">
-          <h3 class="lesson-title">Lesson ${lesson.lessonNumber}</h3>
-          <p class="lesson-subtitle">${lesson.title}</p>
-        </div>
-        <i class="fas fa-chevron-right lesson-arrow"></i>
-      `;
-
-      // Add hover effects manually
-      const applyHoverEffect = () => {
-        info.style.background = "rgba(255, 255, 255, 0.2)";
-        info.style.transform = "translateY(-3px)";
-        info.style.boxShadow = "0 8px 25px rgba(0, 0, 0, 0.4)";
-        info.style.border = "1px solid rgba(255, 255, 255, 0.3)";
-
-        const title = info.querySelector(".lesson-title");
-        const arrow = info.querySelector(".lesson-arrow");
-
-        if (title) {
-          title.style.color = "var(--sna-primary)";
-          title.style.transform = "scale(1.05)";
-          title.style.textShadow = "0 2px 8px rgba(99, 162, 155, 0.3)";
-        }
-
-        if (arrow) {
-          arrow.style.color = "var(--sna-primary)";
-          arrow.style.transform = "translateX(3px)";
-        }
-      };
-
-      const removeHoverEffect = () => {
-        info.style.background = "rgba(255, 255, 255, 0.1)";
-        info.style.transform = "translateY(0)";
-        info.style.boxShadow = "0 4px 16px rgba(0, 0, 0, 0.2)";
-        info.style.border = "1px solid rgba(255, 255, 255, 0.1)";
-
-        const title = info.querySelector(".lesson-title");
-        const arrow = info.querySelector(".lesson-arrow");
-
-        if (title) {
-          title.style.color = "#ffffff";
-          title.style.transform = "scale(1)";
-          title.style.textShadow = "0 2px 4px rgba(0, 0, 0, 0.3)";
-        }
-
-        if (arrow) {
-          arrow.style.color = "rgba(255, 255, 255, 0.7)";
-          arrow.style.transform = "translateX(0)";
-        }
-      };
-
-      // Mouse events
-      info.addEventListener("mouseenter", applyHoverEffect);
-      info.addEventListener("mouseleave", removeHoverEffect);
-
-      // Touch events for mobile
-      info.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        applyHoverEffect();
-      });
-
-      info.addEventListener("touchend", (e) => {
-        e.preventDefault();
-
-        if (!lesson.locked) {
-          navigate(`/topics/${lesson.lessonNumber}`);
-        }
-
-        setTimeout(removeHoverEffect, 200);
-      });
-
-      // Click handler for navigation
-      info.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (!lesson.locked) {
-          navigate(`/topics/${lesson.lessonNumber}`);
-        }
-      });
-
-      lessonNode.appendChild(circle);
-      lessonNode.appendChild(info);
-      lessonsContainerRef.current.appendChild(lessonNode);
-
-      if (index < lessons.length - 1) {
-        const nextPosition = positions[index + 1];
-        const pathElement = createLessonPath(
-          position,
-          nextPosition,
-          lesson,
-          index
+        const currentConversation = currentTopic.conversations.find(
+          (c) => c.id === parseInt(conversationId)
         );
-        svgRef.current.appendChild(pathElement);
+        if (currentConversation) {
+          setConversation(currentConversation);
+          setCurrentConversation(currentConversation.id);
+        }
       }
-    });
+    }
+    setIsLoading(false);
   }, [
-    lessons,
-    calculatePathPositions,
-    createLessonPath,
-    getLessonIcon,
-    navigate,
+    lessonNumber,
+    topicId,
+    conversationId,
+    setCurrentLesson,
+    setCurrentTopic,
+    setCurrentConversation,
   ]);
 
+  // Set video source when conversation changes
   useEffect(() => {
-    updateLessonsWithProgress();
-  }, [updateLessonsWithProgress]);
+    if (
+      conversation &&
+      conversation.sentences &&
+      conversation.sentences[currentSentenceIndex]
+    ) {
+      const currentSentence = conversation.sentences[currentSentenceIndex];
+      if (currentSentence.videoSrc) {
+        setVideoSource(currentSentence.videoSrc);
+        
+        // Only try to auto-play if user has interacted
+        if (hasUserInteracted || userInteractionRef.current) {
+          setTimeout(() => {
+            safeVideoPlay();
+          }, 100);
+        } else {
+          // Show interaction overlay for first video
+          setShowIOSAudioOverlay(true);
+        }
+      }
+    }
+  }, [conversation, currentSentenceIndex, setVideoSource, hasUserInteracted]);
 
+  // Show completion card only when conversation is actually completed
   useEffect(() => {
-    renderLessonsPath();
-    const handleResize = () => renderLessonsPath();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [lessons, renderLessonsPath]);
+    if (
+      isConversationCompleted &&
+      currentSentenceIndex >= conversation?.sentences?.length - 1
+    ) {
+      setShowCompletionCard(true);
+    } else {
+      setShowCompletionCard(false);
+    }
+  }, [isConversationCompleted, currentSentenceIndex, conversation]);
 
-  if (loading) {
+  // Detect if we're on mobile and set initial overlay state
+  useEffect(() => {
+    if (isMobile) {
+      // On mobile, always show the overlay initially
+      setShowIOSAudioOverlay(true);
+      setHasUserInteracted(false);
+    } else {
+      // On desktop, user interaction might not be required
+      setHasUserInteracted(true);
+      userInteractionRef.current = true;
+    }
+  }, [isMobile]);
+
+  const handleBackClick = () => {
+    navigate(`/topics/${lessonNumber}`);
+  };
+
+  const handleVideoEnd = () => {
+    setShowReplayOverlay(true);
+    // Show practice overlay after a short delay
+    setTimeout(() => {
+      setShowPracticeOverlay(true);
+    }, 1500);
+  };
+
+  const handleReplayClick = async () => {
+    setShowReplayOverlay(false);
+    // Ensure user has interacted before replaying
+    if (hasUserInteracted || userInteractionRef.current) {
+      replay();
+    } else {
+      setShowIOSAudioOverlay(true);
+    }
+  };
+
+  const handlePracticeClose = () => {
+    setShowPracticeOverlay(false);
+  };
+
+  const handleListenClick = () => {
+    // Mark user interaction
+    if (!hasUserInteracted) {
+      setHasUserInteracted(true);
+      userInteractionRef.current = true;
+    }
+
+    if (
+      conversation &&
+      conversation.sentences &&
+      conversation.sentences[currentSentenceIndex]
+    ) {
+      const currentSentence = conversation.sentences[currentSentenceIndex];
+      if (isMobile) {
+        mobileSpeakSentence(currentSentence.english);
+      } else {
+        speakText(currentSentence.english);
+      }
+    }
+  };
+
+  const handleListenSlowClick = () => {
+    // Mark user interaction
+    if (!hasUserInteracted) {
+      setHasUserInteracted(true);
+      userInteractionRef.current = true;
+    }
+
+    if (
+      conversation &&
+      conversation.sentences &&
+      conversation.sentences[currentSentenceIndex]
+    ) {
+      const currentSentence = conversation.sentences[currentSentenceIndex];
+      if (isMobile) {
+        mobileSpeakSentence(currentSentence.english, true);
+      } else {
+        speakText(currentSentence.english, 0.7, 1);
+      }
+    }
+  };
+
+  const handleMicClick = () => {
+    // Mark user interaction
+    if (!hasUserInteracted) {
+      setHasUserInteracted(true);
+      userInteractionRef.current = true;
+    }
+
+    if (isRecording) {
+      stopRecording();
+    } else {
+      startRecording();
+    }
+  };
+
+  const handleStopRecording = async () => {
+    // Wait for recording to stop and get the audio blob
+    const audioBlob = await stopRecordingAndGetBlob();
+
+    if (
+      conversation &&
+      conversation.sentences &&
+      conversation.sentences[currentSentenceIndex]
+    ) {
+      const currentSentence = conversation.sentences[currentSentenceIndex];
+
+      try {
+        const result = await calculatePronunciationScore(
+          audioBlob,
+          currentSentence.english
+        );
+
+        // Handle pronunciation score result
+        console.log("Pronunciation result:", result);
+      } catch (error) {
+        console.error("Error calculating pronunciation score:", error);
+        showAlertMessage("Error processing audio. Please try again.");
+      }
+    } else {
+      console.error("No conversation or sentence data available");
+      showAlertMessage("Error: No sentence data available");
+    }
+  };
+
+  const handleRetry = () => {
+    clearRecording();
+    retrySentence();
+  };
+
+  const handleContinue = async () => {
+    clearRecording();
+
+    if (
+      conversation &&
+      conversation.sentences &&
+      conversation.sentences[currentSentenceIndex]
+    ) {
+      const currentSentence = conversation.sentences[currentSentenceIndex];
+      completeSentence(currentSentenceIndex, lastScore);
+
+      // Move to next sentence if not completed
+      if (currentSentenceIndex < conversation.sentences.length - 1) {
+        const nextSentenceIndex = currentSentenceIndex + 1;
+        setCurrentSentenceIndex(nextSentenceIndex);
+
+        // Hide practice overlay and replay overlay
+        setShowPracticeOverlay(false);
+        setShowReplayOverlay(false);
+
+        // Auto-play next video (only if user has interacted)
+        if (hasUserInteracted || userInteractionRef.current) {
+          setTimeout(async () => {
+            if (conversation.sentences[nextSentenceIndex]?.videoSrc) {
+              setVideoSource(conversation.sentences[nextSentenceIndex].videoSrc);
+              // Wait a bit for video source to load, then play
+              setTimeout(() => {
+                safeVideoPlay();
+              }, 200);
+            }
+          }, 500);
+        }
+      }
+    }
+  };
+
+  const handleBackToLessons = () => {
+    // Save progress before navigating back
+    if (lesson && topic && conversation) {
+      // Progress is already saved through the ProgressContext
+      console.log(
+        `Lesson ${lesson.lessonNumber} completed with score: ${overallScore}%`
+      );
+    }
+    navigate(`/topics/${lessonNumber}`);
+  };
+
+  const showAlertMessage = (message) => {
+    setAlertMessage(message);
+    setShowAlert(true);
+  };
+
+  const hideAlert = () => {
+    setShowAlert(false);
+  };
+
+  const handleIOSAudioClick = async () => {
+    // Mark that user has interacted
+    setHasUserInteracted(true);
+    userInteractionRef.current = true;
+    
+    // Enable video audio
+    enableVideoAudio();
+    
+    // Hide the overlay
+    setShowIOSAudioOverlay(false);
+    
+    // Unmute and try to play video
+    if (videoRef.current) {
+      videoRef.current.muted = false;
+      videoRef.current.volume = 1.0;
+      
+      // If there was a pending video play, try now
+      if (pendingVideoPlay) {
+        setPendingVideoPlay(false);
+        await safeVideoPlay();
+      }
+    }
+  };
+
+  const handleDeleteRecording = () => {
+    clearRecording();
+    setShowPracticeOverlay(false);
+  };
+
+  const handleVideoClick = async () => {
+    if (!hasUserInteracted) {
+      setHasUserInteracted(true);
+      userInteractionRef.current = true;
+      
+      if (isMobile) {
+        enableVideoAudio();
+        setShowIOSAudioOverlay(false);
+        
+        // Unmute video on user interaction
+        if (videoRef.current) {
+          videoRef.current.muted = false;
+          videoRef.current.volume = 1.0;
+        }
+      }
+    }
+    
+    // Try to play/pause video
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        await safeVideoPlay();
+      } else {
+        pause();
+      }
+    }
+  };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      cleanup();
+    };
+  }, [cleanup]);
+
+  if (isLoading) {
     return (
-      <div className="home-page">
-        <GamingBackground />
-        <main className="main-container">
-          <div className="loading-indicator">
-            <i className="fas fa-spinner fa-spin"></i>
-            <p>Loading lessons...</p>
-          </div>
-        </main>
+      <div className="mobile-video-container">
+        <div className="mobile-loading show">
+          <div className="spinner"></div>
+          <span>Loading practice session...</span>
+        </div>
       </div>
     );
   }
 
-  return (
-    <div className="home-page">
-      <GamingBackground />
-      <main className="main-container">
-        <div className="lessons-path-container" ref={lessonsContainerRef}>
-          {/* Lessons will be dynamically inserted here with SVG paths */}
+  if (!lesson || !topic || !conversation) {
+    return (
+      <div className="mobile-video-container">
+        <div className="mobile-loading show">
+          <span>Lesson, topic, or conversation not found</span>
         </div>
-      </main>
-    </div>
+      </div>
+    );
+  }
+
+  const currentSentence = conversation.sentences[currentSentenceIndex];
+
+  return (
+    <>
+      <div className="mobile-video-container">
+        {/* Mobile Progress Bar */}
+        <MobileProgressBar
+          totalSentences={conversation.sentences.length}
+          currentSentenceIndex={currentSentenceIndex}
+          completedSentences={completedSentences}
+        />
+
+        {/* Back Button */}
+        <MobileBackButton onBackClick={handleBackClick} />
+
+        {/* Video Element */}
+        <video
+          ref={videoRef}
+          className="mobile-lesson-video"
+          playsInline
+          preload="auto"
+          muted={!hasUserInteracted}
+          webkit-playsinline="true"
+          onClick={handleVideoClick}
+          onLoadedMetadata={handleLoadedMetadata}
+          onTimeUpdate={handleTimeUpdate}
+          onPlay={handlePlay}
+          onPause={handlePause}
+          onEnded={handleVideoEnd}
+          onError={handleError}
+          onLoadStart={handleLoadStart}
+          onCanPlay={handleCanPlay}
+        >
+          <source src={currentSentence?.videoSrc} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* iOS Audio Enable Overlay */}
+        {showIOSAudioOverlay && (
+          <div className="ios-audio-overlay" onClick={handleIOSAudioClick}>
+            <div className="ios-audio-content">
+              <i className="fas fa-volume-up"></i>
+              <p>Tap to enable audio and start</p>
+            </div>
+          </div>
+        )}
+
+        {/* Subtitle Container */}
+        <MobileSubtitleContainer
+          englishText={currentSentence?.english}
+          arabicText={currentSentence?.arabic}
+        />
+
+        {/* Replay Overlay */}
+        <MobileReplayOverlay
+          show={showReplayOverlay}
+          onReplayClick={handleReplayClick}
+        />
+
+        {/* Practice Overlay */}
+        <MobilePracticeOverlay
+          show={showPracticeOverlay}
+          sentence={currentSentence}
+          isRecording={isRecording}
+          recordingTime={recordingTime}
+          speechDetected={speechDetected}
+          isProcessing={isProcessing}
+          pronunciationScore={
+            lastScore
+              ? {
+                  score: lastScore,
+                  transcriptWords: [],
+                  matchedTranscriptIndices: [],
+                  missingWords: [],
+                }
+              : null
+          }
+          transcription=""
+          onClose={handlePracticeClose}
+          onListenClick={handleListenClick}
+          onListenSlowClick={handleListenSlowClick}
+          onMicClick={handleMicClick}
+          onStopRecording={handleStopRecording}
+          onPlayRecording={playRecordedAudio}
+          onDeleteRecording={handleDeleteRecording}
+        />
+
+        {/* Completion Card */}
+        <MobileCompletionCard
+          show={showCompletionCard}
+          overallScore={overallScore}
+          onBackToLessons={handleBackToLessons}
+        />
+
+        {/* Alert Container */}
+        <MobileAlertContainer
+          show={showAlert}
+          message={alertMessage}
+          onClose={hideAlert}
+        />
+      </div>
+    </>
   );
 };
 
-export default HomePage;
+export default MobilePage;
