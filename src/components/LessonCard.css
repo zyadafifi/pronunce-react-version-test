@@ -1,0 +1,155 @@
+/* LessonCard.css */
+.lesson-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.lesson-avatar {
+  position: relative;
+  flex-shrink: 0;
+  z-index: 3;
+}
+
+.lesson-avatar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #20c997;
+  transition: all 0.3s ease;
+}
+
+.lesson-card.completed .lesson-avatar img {
+  border-color: #20c997;
+}
+
+.lesson-card.current .lesson-avatar img {
+  border-color: #8b5cf6;
+}
+
+.lesson-card.locked .lesson-avatar img {
+  border-color: #6c757d;
+}
+
+.completion-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  background: #20c997;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.6rem;
+  border: 2px solid #0f1419;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.lock-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  background: #6c757d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.6rem;
+  border: 2px solid #0f1419;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.lesson-content {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  flex: 1;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.lesson-card:hover .lesson-content {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.lesson-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.lesson-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.lesson-subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-weight: 400;
+}
+
+.lesson-arrow {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.lesson-card:hover .lesson-arrow {
+  color: white;
+  transform: translateY(-50%) translateX(3px);
+}
+
+.lesson-card.locked .lesson-arrow {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .lesson-card {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .lesson-avatar img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .lesson-content {
+    padding: 0.75rem 1rem;
+  }
+
+  .lesson-title {
+    font-size: 1rem;
+  }
+
+  .lesson-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .lesson-arrow {
+    font-size: 0.9rem;
+  }
+}

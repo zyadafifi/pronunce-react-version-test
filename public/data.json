@@ -1,0 +1,1114 @@
+{
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "title": "Introduction & Basic Greetings",
+      "topics": [
+        {
+          "id": 1,
+          "title": "Greetings",
+          "description": "Basic greetings and introductions",
+          "icon": "fas fa-handshake",
+          "conversations": [
+            {
+              "id": 1,
+              "title": "Welcome & Introduction",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Welcome to the course!",
+                  "arabic": "مرحبا بك في الدورة!",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Let's get started.",
+                  "arabic": "هيا لنبدأ.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "This is the first lesson.",
+                  "arabic": "هذا هو الدرس الأول.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "We will learn together.",
+                  "arabic": "سنتعلم معا.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Practice makes perfect.",
+                  "arabic": "التدريب يحقق الكمال.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Basic Greetings",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Hello, how are you?",
+                  "arabic": "مرحبا، كيف حالك؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Good morning!",
+                  "arabic": "صباح الخير!",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Nice to meet you.",
+                  "arabic": "تشرفنا بمعرفتك.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Have a great day!",
+                  "arabic": "أتمنى لك يوماً رائعاً!",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "See you later!",
+                  "arabic": "أراك لاحقاً!",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Daily Conversations",
+          "description": "Common daily expressions",
+          "icon": "fas fa-comments",
+          "conversations": [
+            {
+              "id": 3,
+              "title": "Daily Expressions",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "What's your name?",
+                  "arabic": "ما اسمك؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "How are you today?",
+                  "arabic": "كيف حالك اليوم؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Where are you from?",
+                  "arabic": "من أين أنت؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "What do you do?",
+                  "arabic": "ماذا تعمل؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Nice to meet you too.",
+                  "arabic": "تشرفنا بمعرفتك أيضاً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "title": "Common Phrases",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Excuse me, please.",
+                  "arabic": "اعذرني من فضلك.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Thank you very much.",
+                  "arabic": "شكراً جزيلاً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "You're welcome.",
+                  "arabic": "عفواً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I'm sorry.",
+                  "arabic": "أعتذر.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "No problem.",
+                  "arabic": "لا مشكلة.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Advanced Topics",
+          "description": "Complex conversations and expressions",
+          "icon": "fas fa-graduation-cap",
+          "conversations": [
+            {
+              "id": 5,
+              "title": "Complex Greetings",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "How have you been lately?",
+                  "arabic": "كيف كنت مؤخراً؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "It's been a while since we met.",
+                  "arabic": "لقد مر وقت طويل منذ أن التقينا.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I hope everything is going well.",
+                  "arabic": "أتمنى أن كل شيء يسير على ما يرام.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "What brings you here today?",
+                  "arabic": "ما الذي أتى بك هنا اليوم؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I'm looking forward to our conversation.",
+                  "arabic": "أتطلع إلى محادثتنا.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "title": "Professional Greetings",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Good morning, everyone.",
+                  "arabic": "صباح الخير، جميعاً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I'm pleased to meet you all.",
+                  "arabic": "يسعدني أن ألتقي بكم جميعاً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Let's begin our meeting.",
+                  "arabic": "دعونا نبدأ اجتماعنا.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Thank you for your time.",
+                  "arabic": "شكراً لوقتكم.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I look forward to working with you.",
+                  "arabic": "أتطلع إلى العمل معكم.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "title": "Order Favorite Coffee",
+      "topics": [
+        {
+          "id": 4,
+          "title": "Coffee Basics",
+          "description": "Basic coffee ordering phrases",
+          "icon": "fas fa-coffee",
+          "conversations": [
+            {
+              "id": 7,
+              "title": "Ordering Coffee",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "I would like a coffee, please.",
+                  "arabic": "أود قهوة من فضلك.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "What types of coffee do you have?",
+                  "arabic": "ما أنواع القهوة المتوفرة لديكم؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I'll have a cappuccino.",
+                  "arabic": "سأطلب كابتشينو.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Large or small?",
+                  "arabic": "كبير أم صغير؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Large, please.",
+                  "arabic": "كبير من فضلك.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 8,
+              "title": "Coffee Preferences",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Do you have decaf?",
+                  "arabic": "هل لديكم قهوة منزوعة الكافيين؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I prefer it strong.",
+                  "arabic": "أفضلها قوية.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "With milk or without?",
+                  "arabic": "مع حليب أم بدونه؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "A little sugar, please.",
+                  "arabic": "قليل من السكر من فضلك.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "That sounds perfect.",
+                  "arabic": "يبدو ذلك مثالياً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "title": "Coffee Shop Service",
+          "description": "Service and payment conversations",
+          "icon": "fas fa-concierge-bell",
+          "conversations": [
+            {
+              "id": 9,
+              "title": "Service Questions",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Is this for here or to go?",
+                  "arabic": "هل هذا للجلوس هنا أم للخارج؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "For here, please.",
+                  "arabic": "للجلوس هنا من فضلك.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "How much is it?",
+                  "arabic": "كم الثمن؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "That will be five dollars.",
+                  "arabic": "سيكون ذلك خمسة دولارات.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Here you are.",
+                  "arabic": "تفضل.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 10,
+              "title": "Payment and Thanks",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Thank you very much.",
+                  "arabic": "شكراً جزيلاً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "You're welcome.",
+                  "arabic": "عفواً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Enjoy your coffee!",
+                  "arabic": "استمتع بقهوتك!",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Thank you, I will.",
+                  "arabic": "شكراً، سأفعل.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Have a great day!",
+                  "arabic": "أتمنى لك يوماً رائعاً!",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "title": "Coffee Culture",
+          "description": "Advanced coffee conversations",
+          "icon": "fas fa-mug-hot",
+          "conversations": [
+            {
+              "id": 11,
+              "title": "Coffee Knowledge",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "What's your favorite coffee?",
+                  "arabic": "ما هي قهوتك المفضلة؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I love Ethiopian coffee.",
+                  "arabic": "أحب القهوة الإثيوبية.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "It has a rich flavor.",
+                  "arabic": "لها نكهة غنية.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Do you drink coffee every day?",
+                  "arabic": "هل تشرب القهوة كل يوم؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Yes, I can't start without it.",
+                  "arabic": "نعم، لا أستطيع البدء بدونها.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "title": "Coffee Rituals",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Coffee is part of my morning routine.",
+                  "arabic": "القهوة جزء من روتين صباحي.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I enjoy the aroma.",
+                  "arabic": "أستمتع بالرائحة.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "It helps me wake up.",
+                  "arabic": "تساعدني على الاستيقاظ.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Coffee brings people together.",
+                  "arabic": "القهوة تجمع الناس معاً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "That's very true.",
+                  "arabic": "هذا صحيح جداً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "title": "Coffee Choices",
+      "topics": [
+        {
+          "id": 7,
+          "title": "Menu Selection",
+          "description": "Choosing from coffee menu",
+          "icon": "fas fa-list",
+          "conversations": [
+            {
+              "id": 13,
+              "title": "Menu Reading",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Can I see the menu?",
+                  "arabic": "هل يمكنني رؤية القائمة؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "What do you recommend?",
+                  "arabic": "ماذا تنصح؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I'll try the latte.",
+                  "arabic": "سأجرب اللاتيه.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Is it good?",
+                  "arabic": "هل هو جيد؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Yes, it's delicious.",
+                  "arabic": "نعم، إنه لذيذ.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 14,
+              "title": "Special Orders",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Can you make it extra hot?",
+                  "arabic": "هل يمكنك جعله ساخناً جداً؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "No problem at all.",
+                  "arabic": "لا مشكلة على الإطلاق.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Can I have extra foam?",
+                  "arabic": "هل يمكنني الحصول على رغوة إضافية؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Of course, coming right up.",
+                  "arabic": "بالطبع، سأحضرها فوراً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Perfect, thank you.",
+                  "arabic": "مثالي، شكراً لك.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Coffee Varieties",
+          "description": "Different types of coffee",
+          "icon": "fas fa-coffee",
+          "conversations": [
+            {
+              "id": 15,
+              "title": "Coffee Types",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "What's the difference between espresso and americano?",
+                  "arabic": "ما الفرق بين الإسبريسو والأمريكانو؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Espresso is stronger and smaller.",
+                  "arabic": "الإسبريسو أقوى وأصغر.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Americano has more water.",
+                  "arabic": "الأمريكانو يحتوي على ماء أكثر.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Which one do you prefer?",
+                  "arabic": "أيهما تفضل؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I like americano better.",
+                  "arabic": "أفضل الأمريكانو أكثر.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 16,
+              "title": "Coffee Origins",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Where does this coffee come from?",
+                  "arabic": "من أين تأتي هذه القهوة؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "It's from Colombia.",
+                  "arabic": "إنها من كولومبيا.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Colombian coffee is very smooth.",
+                  "arabic": "القهوة الكولومبية ناعمة جداً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I agree, it's excellent.",
+                  "arabic": "أوافق، إنها ممتازة.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Would you like to try it?",
+                  "arabic": "هل تود تجربتها؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "title": "Coffee Preparation",
+          "description": "How coffee is made",
+          "icon": "fas fa-cogs",
+          "conversations": [
+            {
+              "id": 17,
+              "title": "Brewing Methods",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "How do you make this coffee?",
+                  "arabic": "كيف تصنع هذه القهوة؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "We use a French press.",
+                  "arabic": "نستخدم المكبس الفرنسي.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "It takes about four minutes.",
+                  "arabic": "يستغرق حوالي أربع دقائق.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "That's interesting.",
+                  "arabic": "هذا مثير للاهتمام.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Would you like to see the process?",
+                  "arabic": "هل تود رؤية العملية؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 18,
+              "title": "Coffee Equipment",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "What equipment do you use?",
+                  "arabic": "ما المعدات التي تستخدمها؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "We have a professional espresso machine.",
+                  "arabic": "لدينا آلة إسبريسو احترافية.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "It's very expensive.",
+                  "arabic": "إنها باهظة الثمن جداً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "But it makes great coffee.",
+                  "arabic": "لكنها تصنع قهوة رائعة.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I can taste the difference.",
+                  "arabic": "يمكنني تذوق الفرق.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lessonNumber": 4,
+      "title": "Smoothie Options",
+      "topics": [
+        {
+          "id": 10,
+          "title": "Smoothie Basics",
+          "description": "Basic smoothie ordering",
+          "icon": "fas fa-blender",
+          "conversations": [
+            {
+              "id": 19,
+              "title": "Ordering Smoothies",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "I'd like a smoothie, please.",
+                  "arabic": "أود عصيراً مخفوقاً من فضلك.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "What flavors do you have?",
+                  "arabic": "ما النكهات المتوفرة لديكم؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "We have strawberry, banana, and mango.",
+                  "arabic": "لدينا فراولة وموز ومانجو.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I'll have strawberry.",
+                  "arabic": "سأطلب الفراولة.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Great choice!",
+                  "arabic": "اختيار رائع!",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 20,
+              "title": "Smoothie Customization",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Can you add protein powder?",
+                  "arabic": "هل يمكنك إضافة مسحوق البروتين؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Of course, no extra charge.",
+                  "arabic": "بالطبع، بدون رسوم إضافية.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "What about almond milk?",
+                  "arabic": "ماذا عن حليب اللوز؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Yes, we have that too.",
+                  "arabic": "نعم، لدينا ذلك أيضاً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Perfect, thank you.",
+                  "arabic": "مثالي، شكراً لك.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "title": "Healthy Options",
+          "description": "Healthy smoothie choices",
+          "icon": "fas fa-heart",
+          "conversations": [
+            {
+              "id": 21,
+              "title": "Nutritional Benefits",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Is this smoothie healthy?",
+                  "arabic": "هل هذا العصير صحي؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Yes, it's made with fresh fruits.",
+                  "arabic": "نعم، إنه مصنوع من فواكه طازجة.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "No added sugar?",
+                  "arabic": "بدون سكر مضاف؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "That's right, it's all natural.",
+                  "arabic": "هذا صحيح، إنه طبيعي تماماً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "That sounds perfect.",
+                  "arabic": "يبدو ذلك مثالياً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 22,
+              "title": "Dietary Preferences",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Do you have vegan options?",
+                  "arabic": "هل لديكم خيارات نباتية؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Yes, we use plant-based milk.",
+                  "arabic": "نعم، نستخدم حليب نباتي.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "What about gluten-free?",
+                  "arabic": "ماذا عن خالي من الجلوتين؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "All our smoothies are gluten-free.",
+                  "arabic": "جميع عصائرنا خالية من الجلوتين.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Excellent, I'll take one.",
+                  "arabic": "ممتاز، سآخذ واحداً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Smoothie Recipes",
+          "description": "Learning about smoothie making",
+          "icon": "fas fa-book-open",
+          "conversations": [
+            {
+              "id": 23,
+              "title": "Recipe Sharing",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Can you share the recipe?",
+                  "arabic": "هل يمكنك مشاركة الوصفة؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Sure, it's very simple.",
+                  "arabic": "بالطبع، إنها بسيطة جداً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "You need frozen berries and yogurt.",
+                  "arabic": "تحتاج توت مجمد وزبادي.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "How much of each?",
+                  "arabic": "كم من كل واحد؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "One cup of each ingredient.",
+                  "arabic": "كوب واحد من كل مكون.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 24,
+              "title": "Making Tips",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Any tips for making smoothies?",
+                  "arabic": "أي نصائح لصنع العصائر؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Use frozen fruit for thickness.",
+                  "arabic": "استخدم الفواكه المجمدة للكثافة.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Add liquid gradually.",
+                  "arabic": "أضف السائل تدريجياً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Blend for at least 30 seconds.",
+                  "arabic": "اخلط لمدة 30 ثانية على الأقل.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Thanks for the advice!",
+                  "arabic": "شكراً على النصيحة!",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lessonNumber": 5,
+      "title": "Items to Buy",
+      "topics": [
+        {
+          "id": 13,
+          "title": "Shopping Basics",
+          "description": "Basic shopping conversations",
+          "icon": "fas fa-shopping-bag",
+          "conversations": [
+            {
+              "id": 25,
+              "title": "Shopping List",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "I need to buy some groceries.",
+                  "arabic": "أحتاج لشراء بعض البقالة.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "What's on your list?",
+                  "arabic": "ماذا في قائمتك؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I need milk, bread, and eggs.",
+                  "arabic": "أحتاج حليب وخبز وبيض.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Anything else?",
+                  "arabic": "أي شيء آخر؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Maybe some vegetables too.",
+                  "arabic": "ربما بعض الخضروات أيضاً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 26,
+              "title": "Finding Items",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Where can I find the milk?",
+                  "arabic": "أين يمكنني العثور على الحليب؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "It's in the dairy section.",
+                  "arabic": "إنه في قسم الألبان.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Which aisle is that?",
+                  "arabic": "أي ممر هذا؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "It's aisle 3, on the right.",
+                  "arabic": "إنه الممر 3، على اليمين.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Thank you for your help.",
+                  "arabic": "شكراً لمساعدتك.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "title": "Product Selection",
+          "description": "Choosing products",
+          "icon": "fas fa-search",
+          "conversations": [
+            {
+              "id": 27,
+              "title": "Comparing Products",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Which brand do you recommend?",
+                  "arabic": "أي ماركة تنصح؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "This one is very popular.",
+                  "arabic": "هذه شائعة جداً.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Is it good quality?",
+                  "arabic": "هل هي جيدة الجودة؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Yes, and it's reasonably priced.",
+                  "arabic": "نعم، وسعرها معقول.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "I'll take this one then.",
+                  "arabic": "سآخذ هذه إذن.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 28,
+              "title": "Product Information",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "What's the expiration date?",
+                  "arabic": "ما تاريخ انتهاء الصلاحية؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "It's good for another week.",
+                  "arabic": "إنها صالحة لأسبوع آخر.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Is it organic?",
+                  "arabic": "هل هي عضوية؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Yes, it's certified organic.",
+                  "arabic": "نعم، إنها معتمدة عضوية.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Perfect, I'll take it.",
+                  "arabic": "مثالي، سآخذه.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "title": "Shopping Experience",
+          "description": "Shopping interactions",
+          "icon": "fas fa-store",
+          "conversations": [
+            {
+              "id": 29,
+              "title": "Customer Service",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Do you need any help?",
+                  "arabic": "هل تحتاج أي مساعدة؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Yes, I'm looking for apples.",
+                  "arabic": "نعم، أبحث عن التفاح.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "They're in the produce section.",
+                  "arabic": "إنها في قسم المنتجات الطازجة.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Are they fresh?",
+                  "arabic": "هل هي طازجة؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Yes, we got them this morning.",
+                  "arabic": "نعم، حصلنا عليها هذا الصباح.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            },
+            {
+              "id": 30,
+              "title": "Shopping Tips",
+              "description": "5 sentences",
+              "sentences": [
+                {
+                  "english": "Any shopping tips?",
+                  "arabic": "أي نصائح للتسوق؟",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Shop early for the best selection.",
+                  "arabic": "تسوق مبكراً للحصول على أفضل اختيار.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Check the weekly sales.",
+                  "arabic": "تحقق من العروض الأسبوعية.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Bring your own bags.",
+                  "arabic": "أحضر أكياسك الخاصة.",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                },
+                {
+                  "english": "Thanks for the advice!",
+                  "arabic": "شكراً على النصيحة!",
+                  "videoSrc": "https://cdn13674550.b-cdn.net/verical%20test.mp4"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

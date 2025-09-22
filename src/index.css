@@ -1,0 +1,935 @@
+/* Mobile Practice Overlay Styles */
+.mobile-practice-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  padding: 0;
+  pointer-events: none;
+}
+
+.mobile-practice-overlay.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.practice-card {
+  background: white;
+  border-radius: 24px 24px 0 0;
+  padding: 32px 28px 40px 28px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 -4px 32px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 320px;
+}
+
+.mobile-practice-overlay.show .practice-card {
+  transform: translateY(0);
+}
+
+/* Header Styles */
+.practice-header {
+  margin-bottom: 32px;
+}
+
+.practice-header h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #4b9b94;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.practice-header p {
+  font-size: 17px;
+  color: #6c757d;
+  margin: 0;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.practice-header .fas.fa-microphone {
+  color: #4b9b94;
+  font-size: 18px;
+}
+
+/* Sentence Styles */
+.practice-sentence {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.sentence-text {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.sentence-phonetic {
+  font-size: 16px;
+  color: #8a8a8a;
+  font-style: italic;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+/* Processing State Styles */
+.processing-state {
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+
+.processing-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.processing-spinner {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.processing-spinner span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #63a29b;
+  border-radius: 50%;
+  animation: processing-dots 1.4s linear infinite;
+}
+
+.processing-spinner span:nth-child(1) {
+  animation-delay: 0s;
+  transform: rotate(0deg) translateX(20px);
+}
+
+.processing-spinner span:nth-child(2) {
+  animation-delay: -0.175s;
+  transform: rotate(45deg) translateX(20px);
+}
+
+.processing-spinner span:nth-child(3) {
+  animation-delay: -0.35s;
+  transform: rotate(90deg) translateX(20px);
+}
+
+.processing-spinner span:nth-child(4) {
+  animation-delay: -0.525s;
+  transform: rotate(135deg) translateX(20px);
+}
+
+.processing-spinner span:nth-child(5) {
+  animation-delay: -0.7s;
+  transform: rotate(180deg) translateX(20px);
+}
+
+.processing-spinner span:nth-child(6) {
+  animation-delay: -0.875s;
+  transform: rotate(225deg) translateX(20px);
+}
+
+.processing-spinner span:nth-child(7) {
+  animation-delay: -1.05s;
+  transform: rotate(270deg) translateX(20px);
+}
+
+.processing-spinner span:nth-child(8) {
+  animation-delay: -1.225s;
+  transform: rotate(315deg) translateX(20px);
+}
+
+@keyframes processing-dots {
+  0% {
+    opacity: 1;
+    transform: rotate(0deg) translateX(20px);
+  }
+  100% {
+    opacity: 0.2;
+    transform: rotate(360deg) translateX(20px);
+  }
+}
+
+.processing-text {
+  font-size: 16px;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.phonetic-text-processing {
+  font-size: 16px;
+  color: #8a8a8a;
+  font-style: italic;
+  margin-bottom: 30px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* Processing Controls */
+.processing-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.processing-mic-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.circular-loading-spinner {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-ring {
+  position: absolute;
+  border: 3px solid transparent;
+  border-top: 3px solid #63a29b;
+  border-radius: 50%;
+  animation: spin-ring 1.5s linear infinite;
+}
+
+.spinner-ring:nth-child(1) {
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+}
+
+.spinner-ring:nth-child(2) {
+  width: 45px;
+  height: 45px;
+  animation-delay: -0.5s;
+  border-top-color: rgba(99, 162, 155, 0.7);
+}
+
+.spinner-ring:nth-child(3) {
+  width: 30px;
+  height: 30px;
+  animation-delay: -1s;
+  border-top-color: rgba(99, 162, 155, 0.4);
+}
+
+@keyframes spin-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Control Buttons */
+.practice-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  margin-top: 5px;
+}
+
+.control-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 16px 20px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  color: #4b9b94;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 70px;
+}
+
+.control-btn:hover {
+  background: rgba(75, 155, 148, 0.08);
+  transform: translateY(-1px);
+}
+
+.control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.control-btn .fas {
+  font-size: 24px;
+  margin-bottom: 2px;
+}
+
+.listen-btn .fas {
+  color: #4b9b94;  
+}
+
+.listen-slow-btn .fas {
+  color: #4b9b94;
+}
+
+/* Mic Button */
+.mic-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    var(--sna-primary) 0%,
+    var(--sna-secondary) 100%
+  );
+  border: none;
+  color: white;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(99, 162, 155, 0.4);
+  position: relative;
+}
+
+.mic-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(75, 155, 148, 0.35);
+}
+
+.mic-btn:active {
+  transform: scale(0.98);
+}
+
+.mic-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  animation: none;
+}
+
+.mic-btn.processing {
+  background: linear-gradient(135deg, #4b9b94 0%, #2c7873 100%);
+  animation: none;
+}
+
+.mic-btn .processing-spinner {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Close Button */
+.practice-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.practice-close-btn:hover {
+  background: rgba(0, 0, 0, 0.15);
+  color: #2c3e50;
+  transform: scale(1.05);
+}
+
+/* Mobile Recording UI */
+.mobile-recording-ui {
+  width: 100%;
+}
+
+.mobile-waveform-container {
+  background: var(--gradient-primary);
+  border-radius: 50px; /* Reduced from 30px to match screenshot */
+  padding: 14px 18px; /* Slightly reduced padding */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: var(--shadow-primary);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-left: 20px;
+  /* Center the container */
+  max-height: 50px;
+}
+
+.mobile-pause-btn,
+.mobile-send-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.mobile-pause-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.mobile-pause-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.mobile-send-btn {
+  background: white;
+  color: #4b9b94;
+}
+
+.mobile-send-btn:hover {
+  background: #f8f9fa;
+  transform: scale(1.05);
+}
+
+.mobile-waveform-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 15px;
+}
+
+.mobile-waveform-bars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 32px;
+}
+
+.mobile-waveform-bar {
+  width: 3px;
+  min-height: 6px;
+  background: white;
+  border-radius: 2px;
+  transition: height 0.1s ease;
+}
+
+.mobile-recording-timer {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile Results Dialog */
+.mobile-dialog-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.mobile-dialog-container.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-dialog-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.mobile-dialog-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.mobile-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.mobile-close-btn:hover {
+  background: rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+/* Dialog Header */
+.mobile-dialog-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.mobile-dialog-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(
+    90deg,
+    var(--sna-primary) 0%,
+    var(--sna-secondary) 100%
+  );
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  margin: 0 auto 16px;
+  box-shadow: 0 8px 20px rgba(99, 162, 155, 0.3);
+}
+
+.mobile-dialog-header h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+}
+
+/* Score Circle */
+.mobile-score-circle-container {
+  position: relative;
+  display: inline-block;
+}
+
+.mobile-score-circle {
+  transform: rotate(-90deg);
+}
+
+.mobile-score-percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: 700;
+  color: linear-gradient(
+    90deg,
+    var(--sna-primary) 0%,
+    var(--sna-secondary) 100%
+  );
+}
+
+/* Results Content */
+.mobile-results-content {
+  margin-bottom: 24px;
+}
+
+.mobile-sentence-comparison {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.mobile-original-sentence,
+.mobile-user-sentence {
+  margin-bottom: 12px;
+}
+
+.mobile-original-sentence:last-child,
+.mobile-user-sentence:last-child {
+  margin-bottom: 0;
+}
+
+.mobile-original-sentence strong,
+.mobile-user-sentence strong {
+  font-size: 14px;
+  color: #6c757d;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.mobile-original-sentence p,
+.mobile-user-sentence p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.correct-text {
+  color: #28a745;
+}
+
+.incorrect-text {
+  color: #dc3545;
+}
+
+/* Dialog Controls */
+.mobile-dialog-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mobile-control-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    var(--sna-primary) 0%,
+    var(--sna-secondary) 100%
+  );
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(99, 162, 155, 0.3);
+}
+
+.mobile-control-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(99, 162, 155, 0.4);
+}
+
+.mobile-control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.mobile-control-btn.playing {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  animation: recording-pulse 1s infinite;
+}
+
+.mobile-dialog-buttons {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.mobile-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.mobile-btn-secondary {
+  background: #f8f9fa;
+  color: #6c757d;
+  border: 2px solid #e9ecef;
+}
+
+.mobile-btn-secondary:hover {
+  background: #e9ecef;
+  transform: translateY(-1px);
+}
+
+.mobile-btn-primary {
+  background: linear-gradient(135deg, #63a29b 0%, #5a9691 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 162, 155, 0.3);
+}
+
+.mobile-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(99, 162, 155, 0.4);
+}
+
+.mobile-btn-primary.success {
+  background: linear-gradient(135deg, #63a29b 0%, #5a9691 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 162, 155, 0.3);
+}
+
+.mobile-btn-primary.error {
+  background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* Processing Spinner in Mic Button */
+.processing-spinner span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
+  animation: processing-dots 1.4s linear infinite;
+}
+
+.processing-spinner span:nth-child(1) {
+  animation-delay: 0s;
+  transform: rotate(0deg) translateX(16px);
+}
+
+.processing-spinner span:nth-child(2) {
+  animation-delay: -0.175s;
+  transform: rotate(45deg) translateX(16px);
+}
+
+.processing-spinner span:nth-child(3) {
+  animation-delay: -0.35s;
+  transform: rotate(90deg) translateX(16px);
+}
+
+.processing-spinner span:nth-child(4) {
+  animation-delay: -0.525s;
+  transform: rotate(135deg) translateX(16px);
+}
+
+.processing-spinner span:nth-child(5) {
+  animation-delay: -0.7s;
+  transform: rotate(180deg) translateX(16px);
+}
+
+.processing-spinner span:nth-child(6) {
+  animation-delay: -0.875s;
+  transform: rotate(225deg) translateX(16px);
+}
+
+.processing-spinner span:nth-child(7) {
+  animation-delay: -1.05s;
+  transform: rotate(270deg) translateX(16px);
+}
+
+.processing-spinner span:nth-child(8) {
+  animation-delay: -1.225s;
+  transform: rotate(315deg) translateX(16px);
+}
+
+/* Animations */
+@keyframes gentle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 8px 24px rgba(75, 155, 148, 0.25);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 10px 28px rgba(75, 155, 148, 0.35);
+  }
+}
+
+@keyframes recording-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(255, 107, 107, 0.5);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .practice-card {
+    padding: 28px 24px 36px 24px;
+    border-radius: 20px 20px 0 0;
+    min-height: 300px;
+  }
+
+  .practice-header h3 {
+    font-size: 28px;
+  }
+
+  .practice-header p {
+    font-size: 16px;
+  }
+
+  .sentence-text {
+    font-size: 22px;
+  }
+
+  .sentence-phonetic {
+    font-size: 15px;
+  }
+
+  .practice-controls {
+    padding: 0 10px;
+  }
+
+  .control-btn {
+    padding: 14px 16px;
+    font-size: 13px;
+    min-width: 65px;
+  }
+
+  .control-btn .fas {
+    font-size: 22px;
+  }
+
+  .mic-btn {
+    width: 75px;
+    height: 75px;
+    font-size: 30px;
+  }
+
+  .mobile-dialog-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .mobile-dialog-header h4 {
+    font-size: 18px;
+  }
+
+  .mobile-score-percentage {
+    font-size: 20px;
+  }
+
+  .mobile-waveform-container {
+    padding: 12px 16px;
+    margin: 16px 0;
+  }
+
+  .mobile-pause-btn,
+  .mobile-send-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .practice-card {
+    padding: 24px 20px 32px 20px;
+  }
+
+  .practice-header h3 {
+    font-size: 26px;
+  }
+
+  .sentence-text {
+    font-size: 20px;
+  }
+
+  .practice-controls {
+    padding: 0 8px;
+  }
+
+  .control-btn {
+    padding: 12px 14px;
+    min-width: 60px;
+  }
+
+  .mic-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+
+  .mobile-dialog-controls {
+    gap: 8px;
+  }
+
+  .mobile-control-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+}

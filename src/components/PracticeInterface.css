@@ -1,0 +1,383 @@
+/* PracticeInterface.css */
+.practice-interface {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+}
+
+.sentence-display {
+  text-align: center;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 16px;
+  position: relative;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sentence-display h3 {
+  color: #20c997;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.close-button {
+  background: #e9ecef;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6c757d;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: #dee2e6;
+  color: #495057;
+}
+
+.sentence-display p {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.sentence-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sentence-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-english);
+}
+
+.sentence-phonetic {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-style: italic;
+  font-family: var(--font-english);
+}
+
+.translation-container {
+  background: #20c997;
+  border-radius: 12px;
+  padding: 1rem;
+  color: white;
+}
+
+.translation-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: var(--font-arabic);
+  direction: rtl;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 16px;
+}
+
+.control-btn {
+  background: #e9ecef;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 60px;
+}
+
+.control-btn:hover {
+  background: #dee2e6;
+  transform: translateY(-1px);
+}
+
+.control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mic-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #20c997;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 2px 8px rgba(32, 201, 151, 0.3);
+}
+
+.mic-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(32, 201, 151, 0.4);
+}
+
+.mic-button.recording {
+  background: #dc3545;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #dc3545;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.recording-dot {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.recognized-text {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.recognized-text h4 {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.recognized-text p {
+  color: #6c757d;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.score-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.score-label {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.score-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-english);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #63a29b, #8abdb7);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 162, 155, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(99, 162, 155, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.results-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.results-content {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+}
+
+.completion-icon {
+  font-size: 4rem;
+  color: #63a29b;
+  margin-bottom: 1rem;
+}
+
+.results-content h3 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.results-content p {
+  color: #6c757d;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.final-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .sentence-display {
+    padding: 1.5rem;
+  }
+
+  .sentence-display h3 {
+    font-size: 1.3rem;
+  }
+
+  .sentence-text {
+    font-size: 1.3rem;
+  }
+
+  .translation-text {
+    font-size: 1.1rem;
+  }
+
+  .control-buttons {
+    gap: 1rem;
+  }
+
+  .control-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    min-width: 70px;
+  }
+
+  .mic-button {
+    width: 70px;
+    height: 70px;
+    font-size: 1.3rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .results-content {
+    padding: 2rem;
+    margin: 1rem;
+  }
+
+  .completion-icon {
+    font-size: 3rem;
+  }
+
+  .results-content h3 {
+    font-size: 1.5rem;
+  }
+}

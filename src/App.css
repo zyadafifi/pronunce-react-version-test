@@ -1,0 +1,146 @@
+/* App.css - Main application styles */
+
+/* Enhanced CSS Variables - SNA Color Palette */
+:root {
+  /* SNA Color Palette */
+  --sna-primary: #63a29b;
+  --sna-secondary: #275151;
+  --sna-primary-light: #8abdb7;
+  --sna-primary-lighter: #b1d7d3;
+  --sna-secondary-dark: #1c3c3c;
+
+  /* Typography Variables */
+  --font-english: "Nunito", sans-serif;
+  --font-arabic: "Tajawal", sans-serif;
+  --font-classic-english: "Lora", serif;
+  --font-classic-arabic: "Amiri", serif;
+  --font-neutral-english: "Poppins", sans-serif;
+  --font-neutral-arabic: "Cairo", sans-serif;
+
+  /* Text Colors */
+  --text-dark: #2c3e50;
+  --text-light: #ffffff;
+  --text-muted: #6c757d;
+  --text-secondary: #495057;
+
+  /* Background Colors */
+  --background-light: #f4f7f6;
+  --background-white: #ffffff;
+  --background-card: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  --border-light: #e9ecef;
+  --border-primary: rgba(99, 162, 155, 0.2);
+
+  /* Enhanced Gradients with SNA Colors */
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--sna-primary) 0%,
+    var(--sna-secondary) 100%
+  );
+  --gradient-primary-soft: linear-gradient(
+    135deg,
+    var(--sna-primary-light) 0%,
+    var(--sna-primary) 100%
+  );
+  --gradient-primary-light: linear-gradient(
+    135deg,
+    var(--sna-primary-lighter) 0%,
+    var(--sna-primary-light) 100%
+  );
+  --gradient-primary-reverse: linear-gradient(
+    135deg,
+    var(--sna-secondary) 0%,
+    var(--sna-primary) 100%
+  );
+  --gradient-card: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  --gradient-success: linear-gradient(
+    135deg,
+    #0aa989 0%,
+    var(--sna-primary) 100%
+  );
+  --gradient-danger: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+
+  /* Enhanced Shadow System */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.25);
+
+  /* Primary Color Shadows */
+  --shadow-primary: 0 10px 30px rgba(99, 162, 155, 0.2),
+    0 5px 15px rgba(99, 162, 155, 0.1), inset 0 0 0 1px rgba(99, 162, 155, 0.05);
+  --shadow-primary-hover: 0 15px 35px rgba(99, 162, 155, 0.25),
+    0 8px 20px rgba(99, 162, 155, 0.15), inset 0 0 0 1px rgba(99, 162, 155, 0.1);
+  --shadow-primary-sm: 0 4px 12px rgba(99, 162, 155, 0.3);
+  --shadow-primary-lg: 0 6px 16px rgba(99, 162, 155, 0.4);
+
+  /* Border Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+  --radius-full: 50%;
+  --radius-pill: 999px;
+}
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  font-family: "Nunito", sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.App::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 50%,
+      rgba(120, 119, 198, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 119, 198, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 80%,
+      rgba(120, 219, 255, 0.3) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure all content is above the background */
+.App > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile Detection and Layout */
+@media (max-width: 768px) {
+  .desktop-container {
+    display: none !important;
+  }
+
+  .mobile-video-container {
+    display: block !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-video-container {
+    display: none !important;
+  }
+
+  .desktop-container {
+    display: block !important;
+  }
+}
